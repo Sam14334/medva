@@ -1,3 +1,1680 @@
-*{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+/* ==========================================================================
+   MARK SAMIA - MEDICAL VIRTUAL ASSISTANT
+   Institutional Healthcare Aesthetic | Sharp, Non-Rounded Precision
+   High-Trust Direct Contact & Experience Portfolio
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens & Color System
+   -------------------------------------------------------------------------- */
+:root {
+    /* Medical Brand Palette */
+    --navy-950:    #06162a;   /* Deepest Surgical Navy */
+    --navy-900:    #0a2240;   /* Primary Clinical Brand */
+    --navy-850:    #0f2f56;
+    --navy-800:    #163b6b;
+    --blue-700:    #025ca0;
+    --blue-600:    #0274c4;   /* Primary Action Blue */
+    --blue-500:    #0284c7;   /* Medical Cyan Accent */
+    --blue-100:    #e2f1fc;
+    --blue-50:     #f0f7fd;
+
+    /* Neutrals & Clean Institutional Surfaces */
+    --bg-page:     #f4f7fa;
+    --bg-surface:  #ffffff;
+    --bg-muted:    #ebf1f6;
+    --bg-accent:   #f8fafc;
+    
+    --border-light: #e2e8f0;
+    --border-mid:   #cbd5e1;
+    --border-dark:  #94a3b8;
+    --border-navy:  #0a2240;
+
+    /* Typography Colors */
+    --text-primary:   #0a1d33;
+    --text-secondary: #2d3f54;
+    --text-muted:     #5e7188;
+    --text-inverse:   #ffffff;
+
+    /* Clinical Status Indicators */
+    --status-active:  #047857;
+    --status-bg:      #d1fae5;
+    --status-border:  #6ee7b7;
+
+    /* Typography */
+    --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Strict Zero-Radius Geometry */
+    --radius-none: 0px;
+    --max-w: 1240px;
+
+    /* Transitions */
+    --t-fast: 0.15s ease;
+    --t-normal: 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Document Setup
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-radius: 0 !important; /* Sharp institutional corners */
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    background-color: var(--bg-page);
+    line-height: 1.7;
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+}
+
+a {
+    color: var(--blue-700);
+    text-decoration: none;
+    transition: color var(--t-fast);
+}
+
+a:hover {
+    color: var(--navy-950);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   3. Full-Width Header & Navigation Bar (Edge-to-Edge)
+   -------------------------------------------------------------------------- */
+.top-notice-bar {
+    width: 100%;
+    background-color: var(--navy-950);
+    color: #cbd5e1;
+    font-size: 0.84375rem;
+    padding: 0.65rem 3.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-notice-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notice-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #34d399;
+    font-weight: 600;
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+}
+
+.notice-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    display: inline-block;
+}
+
+.top-notice-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    font-size: 0.84375rem;
+}
+
+.top-notice-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #94a3b8;
+}
+
+.top-notice-item strong {
+    color: #ffffff;
+}
+
+/* Full-Width Main Navbar */
+.navbar {
+    width: 100%;
+    background-color: var(--bg-surface);
+    border-bottom: 2px solid var(--navy-900);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(6, 22, 42, 0.05);
+}
+
+.nav-container-fluid {
+    width: 100%;
+    padding: 0 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 82px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand-symbol {
+    width: 44px;
+    height: 44px;
+    background-color: var(--navy-900);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    border: 2px solid var(--blue-600);
+}
+
+.brand-text-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-name {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--navy-950);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.brand-role {
+    font-size: 0.75rem;
+    color: var(--blue-700);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+}
+
+.nav-link {
+    font-size: 0.90625rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    letter-spacing: 0.04em;
+    padding: 0.6rem 0;
+    position: relative;
+    transition: color var(--t-fast);
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--blue-700);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--blue-700);
+    transition: width var(--t-fast);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+}
+
+.nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--navy-950);
+}
+
+/* --------------------------------------------------------------------------
+   4. Buttons & Sharp UI Elements
+   -------------------------------------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-size: 0.90625rem;
+    font-weight: 700;
+    padding: 0.85rem 1.6rem;
+    border: 2px solid transparent;
+    transition: all var(--t-fast);
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    letter-spacing: 0.03em;
+}
+
+.btn-primary {
+    background-color: var(--navy-900);
+    color: #ffffff;
+    border-color: var(--navy-900);
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-700);
+    border-color: var(--blue-700);
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: var(--bg-surface);
+    color: var(--navy-950);
+    border-color: var(--navy-900);
+}
+
+.btn-secondary:hover {
+    background-color: var(--navy-900);
+    color: #ffffff;
+}
+
+.btn-blue {
+    background-color: var(--blue-600);
+    color: #ffffff;
+    border-color: var(--blue-600);
+}
+
+.btn-blue:hover {
+    background-color: var(--navy-900);
+    border-color: var(--navy-900);
+    color: #ffffff;
+}
+
+.btn-sm {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8125rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. Container & Section Layouts (Spaced Generously)
+   -------------------------------------------------------------------------- */
+.container {
+    width: 100%;
+    max-width: var(--max-w);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.section {
+    padding: 6.5rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.section-white {
+    background-color: var(--bg-surface);
+}
+
+/* Clean Section Header (No Numbered Prefix) */
+.section-meta-header {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3.5rem;
+    align-items: baseline;
+    margin-bottom: 4.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--navy-900);
+}
+
+.section-kicker {
+    font-size: 0.875rem;
+    font-weight: 800;
+    color: var(--blue-700);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+}
+
+.section-intro-col h2 {
+    font-size: 2.25rem;
+    color: var(--navy-950);
+    margin-bottom: 0.85rem;
+}
+
+.section-intro-col p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero Section (Spacious, Non-Centered with VA Portrait)
+   -------------------------------------------------------------------------- */
+.hero-editorial {
+    padding: 5.5rem 0 5rem 0;
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-mid);
+}
+
+.hero-editorial-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 4.5rem;
+    align-items: stretch;
+}
+
+.hero-left-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hero-kicker-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--blue-700);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.4rem 0.85rem;
+    background-color: var(--blue-50);
+    border-left: 3px solid var(--blue-600);
+    margin-bottom: 1.75rem;
+    width: fit-content;
+    font-family: var(--font-heading);
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--navy-950);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+}
+
+.hero-lead {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+}
+
+.hero-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+}
+
+.hero-metrics-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+    border-left: 3px solid var(--navy-900);
+    padding-left: 1rem;
+}
+
+.metric-val {
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--navy-950);
+    line-height: 1.1;
+}
+
+.metric-desc {
+    font-size: 0.84375rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 0.35rem;
+    line-height: 1.4;
+}
+
+/* Right Hero Column: VA Portrait Card */
+.hero-right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.va-portrait-card {
+    background-color: var(--bg-surface);
+    border: 2px solid var(--navy-900);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.va-photo-wrapper {
+    position: relative;
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    background-color: var(--navy-950);
+}
+
+.va-photo-wrapper img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.3s ease;
+}
+
+.va-photo-wrapper:hover img {
+    transform: scale(1.02);
+}
+
+.va-photo-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(6, 22, 42, 0.95) 90%);
+    padding: 1.75rem 1.5rem 1rem 1.5rem;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.va-name-title h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.va-name-title p {
+    font-size: 0.84375rem;
+    color: #93c5fd;
+    font-weight: 600;
+}
+
+.va-verified-stamp {
+    background-color: #047857;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: var(--font-heading);
+}
+
+.clinical-dossier-compact {
+    background-color: var(--bg-page);
+    border-top: 1px solid var(--border-mid);
+    padding: 1.25rem 1.5rem;
+}
+
+.dossier-mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.dossier-mini-table tr {
+    border-bottom: 1px solid var(--border-light);
+}
+
+.dossier-mini-table tr:last-child {
+    border-bottom: none;
+}
+
+.dossier-mini-table th {
+    text-align: left;
+    padding: 0.6rem 0;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 0.78125rem;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    width: 38%;
+}
+
+.dossier-mini-table td {
+    padding: 0.6rem 0;
+    color: var(--navy-950);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   7. About Section (Spacious Narrative & Practice Box)
+   -------------------------------------------------------------------------- */
+.about-narrative-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 4.5rem;
+}
+
+.narrative-text p {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.narrative-text p strong {
+    color: var(--navy-950);
+}
+
+.practice-principles-box {
+    background-color: var(--bg-surface);
+    border: 2px solid var(--navy-900);
+    padding: 2.25rem;
+}
+
+.practice-principles-box h3 {
+    font-size: 1.15rem;
+    color: var(--navy-950);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 2px solid var(--blue-600);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: var(--font-heading);
+}
+
+.principles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.principle-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    border-left: 3px solid var(--border-mid);
+    padding-left: 1.15rem;
+}
+
+.principle-title {
+    font-size: 0.96875rem;
+    font-weight: 800;
+    color: var(--navy-950);
+}
+
+.principle-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   8. Scope of Practice & Clinical Competencies (Generous Grid Spacing)
+   -------------------------------------------------------------------------- */
+.services-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.matrix-block {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-mid);
+    border-top: 3px solid var(--navy-900);
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all var(--t-fast);
+}
+
+.matrix-block:hover {
+    border-color: var(--blue-600);
+    border-top-color: var(--blue-600);
+    box-shadow: 0 6px 16px rgba(6, 22, 42, 0.06);
+}
+
+.matrix-header {
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.matrix-category {
+    font-size: 0.78125rem;
+    font-weight: 800;
+    color: var(--blue-700);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.45rem;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+}
+
+.matrix-block h3 {
+    font-size: 1.2rem;
+    color: var(--navy-950);
+}
+
+.matrix-desc {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+}
+
+.matrix-duties {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.matrix-duties li {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.matrix-duties li::before {
+    content: "■";
+    color: var(--blue-600);
+    font-size: 0.6rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. EHR & Clinical Software Ledger (Sharp & Clean)
+   -------------------------------------------------------------------------- */
+.ehr-table-wrapper {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-mid);
+    border-top: 3px solid var(--navy-900);
+    overflow: hidden;
+}
+
+.ehr-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9375rem;
+}
+
+.ehr-table thead {
+    background-color: var(--navy-950);
+    color: #ffffff;
+}
+
+.ehr-table th {
+    padding: 1.15rem 1.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.84375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ehr-table th:last-child {
+    border-right: none;
+}
+
+.ehr-table td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-light);
+    color: var(--text-secondary);
+    vertical-align: middle;
+}
+
+.ehr-table td:last-child {
+    border-right: none;
+}
+
+.ehr-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.ehr-table tbody tr:hover {
+    background-color: var(--blue-50);
+}
+
+.ehr-name {
+    font-weight: 700;
+    color: var(--navy-950);
+}
+
+.proficiency-pill {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+}
+
+.proficiency-expert {
+    background-color: var(--navy-900);
+    color: #ffffff;
+}
+
+.proficiency-advanced {
+    background-color: var(--bg-muted);
+    color: var(--navy-950);
+    border: 1px solid var(--border-mid);
+}
+
+/* --------------------------------------------------------------------------
+   10. Career History / Experience (Spaced Editorial Timeline)
+   -------------------------------------------------------------------------- */
+.experience-ledger {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    max-width: 1060px;
+}
+
+.experience-entry {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3rem;
+    padding-bottom: 3.5rem;
+    border-bottom: 1px solid var(--border-mid);
+}
+
+.experience-entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.experience-period-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-left: 3px solid var(--navy-900);
+    padding-left: 1rem;
+}
+
+.exp-dates {
+    font-size: 0.90625rem;
+    font-weight: 800;
+    color: var(--blue-700);
+    font-family: var(--font-heading);
+}
+
+.exp-type {
+    font-size: 0.84375rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.experience-details-col h3 {
+    font-size: 1.35rem;
+    color: var(--navy-950);
+    margin-bottom: 0.35rem;
+}
+
+.exp-organization {
+    font-size: 0.96875rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.exp-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: square;
+    padding-left: 1.35rem;
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   11. CERTIFICATES & CREDENTIALS SHOWCASE (8 DOCUMENT CARDS)
+   -------------------------------------------------------------------------- */
+.cert-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.75rem;
+}
+
+.cert-doc-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-mid);
+    border-top: 4px solid var(--navy-900);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all var(--t-fast);
+}
+
+.cert-doc-card:hover {
+    border-color: var(--blue-600);
+    border-top-color: var(--blue-600);
+    box-shadow: 0 8px 20px rgba(6, 22, 42, 0.08);
+}
+
+.cert-thumb-preview {
+    background-color: #f8fafc;
+    border-bottom: 1px solid var(--border-light);
+    padding: 1.25rem;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.cert-mini-sheet {
+    background-color: #ffffff;
+    border: 1px solid var(--border-mid);
+    padding: 1rem 0.75rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.35rem;
+    transition: transform var(--t-fast);
+}
+
+.cert-doc-card:hover .cert-mini-sheet {
+    transform: translateY(-2px);
+}
+
+.cert-icon-badge {
+    width: 28px;
+    height: 28px;
+    background-color: var(--navy-900);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.cert-sheet-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--navy-950);
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    letter-spacing: 0.02em;
+}
+
+.cert-doc-details {
+    padding: 1.25rem 1.25rem 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.cert-verified-label {
+    font-size: 0.6875rem;
+    font-weight: 800;
+    color: var(--status-active);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: var(--font-heading);
+}
+
+.cert-doc-details h3 {
+    font-size: 1.05rem;
+    color: var(--navy-950);
+    line-height: 1.3;
+}
+
+.cert-issuer-text {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.cert-id-tag {
+    font-size: 0.75rem;
+    color: var(--blue-700);
+    font-weight: 700;
+    margin-top: 0.25rem;
+}
+
+.cert-actions-footer {
+    padding: 0.85rem 1.25rem;
+    border-top: 1px solid var(--border-light);
+    background-color: var(--bg-page);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.cert-btn-view {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: var(--navy-900);
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: var(--font-heading);
+}
+
+.cert-btn-view:hover {
+    background-color: var(--blue-700);
+}
+
+.cert-btn-download {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: var(--bg-surface);
+    color: var(--navy-950);
+    border: 1px solid var(--border-mid);
+    text-transform: uppercase;
+    text-align: center;
+    font-family: var(--font-heading);
+}
+
+.cert-btn-download:hover {
+    background-color: var(--navy-900);
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   12. Interactive Resume & Practice Cover Letter
+   -------------------------------------------------------------------------- */
+.document-viewer-container {
+    background-color: var(--bg-surface);
+    border: 2px solid var(--navy-900);
+    overflow: hidden;
+}
+
+.document-toolbar {
+    background-color: var(--navy-950);
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.doc-switcher-tabs {
+    display: flex;
+    gap: 0.65rem;
+}
+
+.tab-btn {
+    padding: 0.65rem 1.35rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #cbd5e1;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    border: 1px solid transparent;
+    transition: all var(--t-fast);
+}
+
+.tab-btn.active {
+    background-color: #ffffff;
+    color: var(--navy-950);
+    border-color: #ffffff;
+}
+
+.doc-pane {
+    display: none;
+    padding: 4rem;
+}
+
+.doc-pane.active {
+    display: block;
+}
+
+.printable-doc {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+}
+
+.doc-masthead {
+    border-bottom: 3px solid var(--navy-950);
+    padding-bottom: 1.75rem;
+    margin-bottom: 2.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.doc-masthead h2 {
+    font-size: 2.15rem;
+    color: var(--navy-950);
+}
+
+.doc-masthead .doc-title-role {
+    font-size: 1rem;
+    color: var(--blue-700);
+    font-weight: 700;
+}
+
+.doc-meta-right {
+    text-align: right;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.doc-section-block {
+    margin-bottom: 2.25rem;
+}
+
+.doc-section-block h3 {
+    font-size: 0.96875rem;
+    color: var(--navy-950);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: var(--font-heading);
+    border-bottom: 2px solid var(--border-mid);
+    padding-bottom: 0.45rem;
+    margin-bottom: 1.15rem;
+}
+
+.doc-section-block p {
+    font-size: 0.96875rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   13. Physician References & Feedback (Generous Spacing)
+   -------------------------------------------------------------------------- */
+.references-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.reference-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-mid);
+    border-left: 4px solid var(--navy-900);
+    padding: 2.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reference-quote {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 1.75rem;
+    font-style: normal;
+}
+
+.reference-author {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.reference-name {
+    font-weight: 800;
+    color: var(--navy-950);
+    font-size: 1rem;
+}
+
+.reference-title {
+    font-size: 0.84375rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   14. Practice FAQ Accordion (Sharp & Accessible)
+   -------------------------------------------------------------------------- */
+.faq-list {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.faq-row {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-mid);
+}
+
+.faq-row.open {
+    border-color: var(--navy-900);
+    border-left: 4px solid var(--navy-900);
+}
+
+.faq-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 2rem;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--navy-950);
+    text-align: left;
+}
+
+.faq-icon-indicator {
+    font-size: 1.35rem;
+    color: var(--blue-700);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.faq-body {
+    display: none;
+    padding: 0 2rem 1.75rem 2rem;
+    font-size: 0.96875rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    border-top: 1px solid var(--border-light);
+    padding-top: 1.4rem;
+}
+
+.faq-row.open .faq-body {
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   15. DIRECT CONTACT & PRACTITIONER OUTREACH HUB
+   -------------------------------------------------------------------------- */
+.contact-hub-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-hub-card {
+    background-color: var(--bg-surface);
+    border: 2px solid var(--navy-900);
+    padding: 3rem;
+}
+
+.contact-hub-card h3 {
+    font-size: 1.65rem;
+    color: var(--navy-950);
+    margin-bottom: 0.75rem;
+}
+
+.contact-hub-card p.hub-lead {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    margin-bottom: 2.25rem;
+    line-height: 1.65;
+}
+
+.primary-contact-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.channel-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 1.75rem;
+    background-color: var(--bg-page);
+    border: 1px solid var(--border-mid);
+    border-left: 4px solid var(--navy-900);
+    transition: all var(--t-fast);
+}
+
+.channel-box:hover {
+    border-left-color: var(--blue-600);
+    background-color: var(--blue-50);
+}
+
+.channel-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.channel-type {
+    font-size: 0.78125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    font-family: var(--font-heading);
+    margin-bottom: 0.2rem;
+}
+
+.channel-address {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--navy-950);
+}
+
+.channel-btn-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.channel-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 0.55rem 1rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    background-color: var(--navy-900);
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    letter-spacing: 0.03em;
+    line-height: 1;
+    height: 38px;
+    transition: background-color var(--t-fast);
+}
+
+.channel-action-btn:hover {
+    background-color: var(--blue-700);
+    color: #ffffff;
+}
+
+.channel-action-btn--blue {
+    background-color: var(--blue-600);
+}
+
+.channel-action-btn--blue:hover {
+    background-color: var(--navy-900);
+}
+
+/* Practice Readiness Sidebar */
+.readiness-sidebar {
+    background-color: var(--bg-surface);
+    border: 2px solid var(--navy-900);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.readiness-sidebar h4 {
+    font-size: 1.15rem;
+    color: var(--navy-950);
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    letter-spacing: 0.05em;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--navy-900);
+}
+
+.readiness-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.readiness-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.readiness-item span.label {
+    font-size: 0.78125rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+.readiness-item span.value {
+    font-size: 0.96875rem;
+    color: var(--navy-950);
+    font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   16. Modal Dialog (Official Certificate Viewer with Image & Download)
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(6, 22, 42, 0.85);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+.modal-box {
+    background-color: var(--bg-surface);
+    max-width: 780px;
+    width: 100%;
+    border: 3px solid var(--navy-950);
+    overflow: hidden;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-head {
+    background-color: var(--navy-950);
+    color: #ffffff;
+    padding: 1.15rem 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-head h3 {
+    color: #ffffff;
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+}
+
+.modal-close {
+    color: #cbd5e1;
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #ffffff;
+}
+
+.modal-content-area {
+    padding: 2rem 2.5rem;
+    overflow-y: auto;
+}
+
+.modal-cert-image-frame {
+    width: 100%;
+    border: 2px solid var(--navy-900);
+    margin-bottom: 1.5rem;
+    background-color: #f1f5f9;
+}
+
+.modal-cert-image-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.modal-cert-meta {
+    background-color: var(--bg-page);
+    border: 1px solid var(--border-mid);
+    padding: 1.25rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.modal-actions-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   17. Full-Width Footer
+   -------------------------------------------------------------------------- */
+.editorial-footer {
+    width: 100%;
+    background-color: var(--navy-950);
+    color: #94a3b8;
+    padding: 5rem 0 2.5rem 0;
+    border-top: 3px solid var(--blue-600);
+}
+
+.footer-columns-grid {
+    display: grid;
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+    gap: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-identity h4 {
+    font-size: 1.3rem;
+    color: #ffffff;
+    margin-bottom: 0.85rem;
+}
+
+.footer-identity p {
+    font-size: 0.90625rem;
+    line-height: 1.7;
+    max-width: 360px;
+}
+
+.footer-nav-col h5 {
+    font-size: 0.8125rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.35rem;
+    font-family: var(--font-heading);
+}
+
+.footer-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-links-list a {
+    color: #94a3b8;
+    font-size: 0.90625rem;
+}
+
+.footer-links-list a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom-bar {
+    padding-top: 2.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.84375rem;
+    color: #64748b;
+}
+
+/* --------------------------------------------------------------------------
+   18. Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+    .top-notice-bar,
+    .nav-container-fluid {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .cert-gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-editorial-grid,
+    .about-narrative-grid,
+    .contact-hub-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+
+    .services-matrix,
+    .references-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .section-meta-header {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .footer-columns-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-notice-bar {
+        display: none;
+    }
+
+    .nav-container-fluid {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 82px;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-surface);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.25rem;
+        border-bottom: 2px solid var(--navy-900);
+        display: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .services-matrix,
+    .cert-gallery-grid,
+    .references-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-entry {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .doc-pane {
+        padding: 2rem 1.5rem;
+    }
+
+    .footer-columns-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom-bar {
+        flex-direction: column;
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    .channel-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .modal-cert-meta {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Print Specific Rules */
+@media print {
+    .navbar, .top-notice-bar, .editorial-footer, .hero-editorial, .document-toolbar, .btn, .faq-list, .contact-hub-grid {
+        display: none !important;
+    }
+    
+    body, .doc-pane, .printable-doc {
+        background: white !important;
+        color: black !important;
+        padding: 0 !important;
+    }
 }
